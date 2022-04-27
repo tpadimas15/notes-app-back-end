@@ -41,7 +41,7 @@ class UsersSerivce {
 
   async getUserById(userId) {
     const query = {
-      text: "SELECT id, username, fullname, FROM users WHERE id = $1",
+      text: "SELECT id, username, fullname FROM users WHERE id = $1",
       values: [userId],
     };
 
@@ -54,3 +54,5 @@ class UsersSerivce {
     return result.rows[0];
   }
 }
+
+module.exports = UsersSerivce;
