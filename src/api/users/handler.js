@@ -6,7 +6,7 @@ class UsersHandler {
     this._validator = validator;
 
     this.postUserHandler = this.postUserHandler.bind(this);
-    this.getUserHandler = this.getUserByIdHandler.bind(this);
+    this.getUserByIdHandler = this.getUserByIdHandler.bind(this);
   }
 
   async postUserHandler(request, h) {
@@ -49,7 +49,9 @@ class UsersHandler {
   async getUserByIdHandler(request, h) {
     try {
       const { id } = request.params;
+
       const user = await this._service.getUserById(id);
+
       return {
         status: "success",
         data: {
@@ -66,7 +68,7 @@ class UsersHandler {
         return response;
       }
 
-      //Server ERROR!
+      // server ERROR!
       const response = h.response({
         status: "error",
         message: "Maaf, terjadi kegagalan pada server kami.",
