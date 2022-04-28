@@ -35,12 +35,12 @@ class UsersHandler {
         return response;
       }
 
-      //Server ERROR
+      // Server ERROR!
       const response = h.response({
         status: "error",
         message: "Maaf, terjadi kegagalan pada server kami.",
       });
-      response.error(500);
+      response.code(500);
       console.error(error);
       return response;
     }
@@ -49,9 +49,7 @@ class UsersHandler {
   async getUserByIdHandler(request, h) {
     try {
       const { id } = request.params;
-
       const user = await this._service.getUserById(id);
-
       return {
         status: "success",
         data: {
